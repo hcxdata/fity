@@ -4,8 +4,11 @@ gem 'rails', '4.2.0'
 gem 'sqlite3'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem "sidekiq", "~> 3.2.5"
-gem 'twitter', '~> 5.13.0'
+gem "fume-settable", "0.0.3"
+gem 'twitter', '5.13.0'
+
+# background
+gem "sidekiq", "3.2.6"
 
 # views
 gem 'jbuilder', '~> 2.0'

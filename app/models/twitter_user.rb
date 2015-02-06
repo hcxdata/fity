@@ -25,9 +25,9 @@ class TwitterUser < ActiveRecord::Base
 
   def sync(data)
     self.sync_at = Time.current
-    self.extra = data
-    self.upcode = data[:id_str]
-    self.attributes = data.slice(:name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
-    self.save
+    self.extra = data.to_h
+    self.upcode = data.id.to_s
+    self.attributes = data.attrs.slice(:name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
+    save
   end
 end
