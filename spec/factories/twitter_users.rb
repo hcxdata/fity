@@ -19,15 +19,9 @@
 #  updated_at      :datetime         not null
 #
 
-class TwitterUser < ActiveRecord::Base
-  belongs_to :account
-  has_many :tweets, class_name: TwitterTweet, foreign_key: "user_id"
-
-  def sync(data)
-    self.sync_at = Time.current
-    self.extra = data
-    self.upcode = data[:id_str]
-    self.attributes = data.slice(:name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
-    self.save
+FactoryGirl.define do
+  factory :twitter_user do
+    account
+    sequence(:screen_name) { |n| "twitter-#{n}" }
   end
 end

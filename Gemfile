@@ -4,6 +4,7 @@ gem 'rails', '4.2.0'
 gem 'sqlite3'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem "sidekiq", "~> 3.2.5"
 gem 'twitter', '~> 5.13.0'
 
 # views
@@ -26,4 +27,10 @@ group :development, :test do
   gem 'annotate'
   gem 'pry-rails'
   gem 'rspec-rails', '3.2.0'
+  gem 'factory_girl_rails', '4.5.0'
+end
+
+group :test do
+  gem 'vcr', '2.9.3'
+  gem 'webmock', '1.20.4'
 end

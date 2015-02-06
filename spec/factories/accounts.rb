@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 
-class Account < ActiveRecord::Base
-  has_one :twitter_user
+FactoryGirl.define do
+  factory :account do
+    sequence(:name) { |n| "account-#{n}" }
+  end
 end
