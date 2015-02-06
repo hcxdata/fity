@@ -1,0 +1,11 @@
+machine:
+  ruby:
+    version: 2.1.3
+
+dependencies:
+  post:
+    - ln -sf settings.local.rb.example config/settings.local.rb
+
+database:
+  post:
+    - bundle exec rake db:migrate
