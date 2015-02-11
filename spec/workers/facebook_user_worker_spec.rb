@@ -7,4 +7,3 @@ RSpec.describe FacebookUserWorker, type: :worker do
     it { expect(user.reload.upcode).to eq "40796308305" }
   end
 end
-require 'rails_helper'

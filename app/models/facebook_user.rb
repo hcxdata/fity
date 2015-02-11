@@ -23,7 +23,7 @@
 
 class FacebookUser < ActiveRecord::Base
   belongs_to :account
-  has_many :posts,class_name: FacebookPost,foreign_key: "user_id"
+  has_many :posts, class_name: FacebookPost, foreign_key: "user_id"
   
   def sync(data)
     self.sync_at = Time.current
