@@ -5,6 +5,7 @@ class FacebookPost < ActiveRecord::Base
     def sync(data)
       self.extra = data.to_h
       self.upcode = data.key?("upcode") ? data["upcode"] : data["id"]
+      self.link ="https://www.facebook.com/" + self.upcode.gsub("_", "/posts/")
       self.attributes = data.slice("message", "type", "created_time", "updated_time", "comment_count")
       save
     end
