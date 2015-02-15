@@ -7,5 +7,7 @@ dependencies:
     - ln -sf settings.local.rb.example config/settings.local.rb
 
 database:
+  override:
+    - cp config/database.yml.example config/database.yml
   post:
     - bundle exec rake db:migrate
