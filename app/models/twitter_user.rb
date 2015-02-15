@@ -31,11 +31,4 @@ class TwitterUser < ActiveRecord::Base
     self.attributes = data.attrs.slice(:screen_name, :name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
     save
   end
-
-  def self.schedule_all
-    TwitterUser.find_each do |u|
-      TwitterUserWorker.perform_async(u.id)
-      TwitterUserTimelineWorker.perform_async(u.id)
-    end
-  end
 end
