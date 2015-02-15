@@ -1,5 +1,7 @@
 class TwitterUserWorker
+  include Sidekiq::Worker
   include TwitterClient
+  sidekiq_options retry: 5
 
   def perform(user_id)
     twitter_user = TwitterUser.find(user_id)

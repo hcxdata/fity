@@ -8,7 +8,5 @@ class CreateTwitterTweets < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    add_foreign_key :twitter_tweets, :users
   end
 end
