@@ -1,18 +1,20 @@
 class CreateFacebookPosts < ActiveRecord::Migration
   def change
     create_table :facebook_posts do |t|
-      t.belongs_to :user, index: true
+      t.belongs_to :post, index: true
 
-      t.string   :upcode, index: true, null: false
-      t.string   :message
-      t.string   :type
-      t.datetime :created_time, index: true, null: false
-      t.datetime :updated_time, index: true, null: false
+      t.string   :upcode, index: true
+      t.datetime :posted_at
+
+      t.string  :message
+      t.string  :link
+      t.integer :comment_count
+      t.integer :like_count
+      t.integer :share_count
+
       t.text :extra
 
       t.timestamps null: false
     end
-
-    add_foreign_key :facebook_feeds, :facebook_users
   end
 end

@@ -13,6 +13,7 @@
 
 class TwitterTweet < ActiveRecord::Base
   belongs_to :user, class_name: TwitterUser, foreign_key: "user_id"
+  store :extra, coder: JSON
 
   def sync(data)
     self.extra = data.to_h

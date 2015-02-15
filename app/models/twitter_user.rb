@@ -21,6 +21,7 @@
 
 class TwitterUser < ActiveRecord::Base
   belongs_to :account
+  store :extra, coder: JSON
   has_many :tweets, class_name: TwitterTweet, foreign_key: "user_id"
 
   def sync(data)

@@ -1,7 +1,7 @@
 class CreateTwitterUsers < ActiveRecord::Migration
   def change
     create_table :twitter_users do |t|
-      t.belongs_to :account, index: true, uniq: true
+      t.belongs_to :account, index: true
 
       t.string   :screen_name
       t.string   :upcode
@@ -18,7 +18,5 @@ class CreateTwitterUsers < ActiveRecord::Migration
       t.text :extra
       t.timestamps null: false
     end
-
-    add_foreign_key :twitter_users, :accounts
   end
 end
