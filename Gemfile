@@ -10,7 +10,10 @@ gem 'twitter', '5.13.0'
 gem "koala", "1.11.1"
 
 # background
+gem "whenever", "~> 0.9.3", require: false
 gem "sidekiq", "3.2.6"
+gem "sinatra", ">= 1.4.4"
+gem "slim", ">= 2.0.0"
 
 # views
 gem 'jbuilder', '~> 2.0'
@@ -37,7 +40,7 @@ end
 
 group :development do
   gem "capsum", "~> 1.0.2", require: false
-  # gem "capistrano-sidekiq", "~> 0.3.5", require: false
+  gem "capistrano-sidekiq", "~> 0.3.5", require: false
 end
 
 group :test do
