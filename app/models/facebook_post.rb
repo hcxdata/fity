@@ -17,7 +17,7 @@
 #
 
 class FacebookPost < ActiveRecord::Base
-  belongs_to :page, class_name: FacebookPage, foreign_key: "post_id"
+  belongs_to :page, class_name: FacebookPage, foreign_key: "page_id"
   API_FIELDS = %w(
     id
     message

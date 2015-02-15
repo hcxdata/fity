@@ -20,7 +20,7 @@
 class FacebookPage < ActiveRecord::Base
   store :extra, coder: JSON
   belongs_to :account
-  has_many :posts, class_name: FacebookPost, foreign_key: "post_id"
+  has_many :posts, class_name: FacebookPost, foreign_key: "page_id"
 
   def sync(data)
     self.sync_at = Time.current
