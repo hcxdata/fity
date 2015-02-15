@@ -25,5 +25,5 @@ production:
   database: ndp
   pool: 30
   username: root
-  password: SgeMeTi7xQw[A1o9
+  password: "SgeMeTi7xQw[A1o9"
   host: news.jetyun.com
