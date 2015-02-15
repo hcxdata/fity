@@ -27,7 +27,7 @@ class FacebookPage < ActiveRecord::Base
     self.extra = data.to_h
     self.upcode = data["id"]
 
-    self.attributes = data.slice('name', 'bio', 'link', 'likes', 'talking_about_count')
+    self.attributes = data.slice('username', 'name', 'bio', 'link', 'likes', 'talking_about_count')
     save
   end
 

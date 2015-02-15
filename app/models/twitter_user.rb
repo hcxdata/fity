@@ -28,7 +28,7 @@ class TwitterUser < ActiveRecord::Base
     self.sync_at = Time.current
     self.extra = data.to_h
     self.upcode = data.id.to_s
-    self.attributes = data.attrs.slice(:name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
+    self.attributes = data.attrs.slice(:screen_name, :name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
     save
   end
 
