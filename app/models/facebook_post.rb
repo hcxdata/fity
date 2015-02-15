@@ -40,9 +40,9 @@ class FacebookPost < ActiveRecord::Base
     self.upcode = data["id"]
 
     self.posted_at     = data["created_time"]
-    self.like_count    = data.deep_fetch("likes", "summary", "total_count") { 0 }
-    self.comment_count = data.deep_fetch("comments", "summary", "total_count") { 0 }
-    self.share_count   = data.deep_fetch("shares", "count") { 0 }
+    self.likes_count    = data.deep_fetch("likes", "summary", "total_count") { 0 }
+    self.comments_count = data.deep_fetch("comments", "summary", "total_count") { 0 }
+    self.shares_count   = data.deep_fetch("shares", "count") { 0 }
 
     self.attributes = data.slice("message", "link")
     save
