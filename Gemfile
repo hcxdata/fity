@@ -37,6 +37,11 @@ group :development, :test do
   gem 'factory_girl_rails', '4.5.0'
 end
 
+group :development do
+  gem "capsum", "~> 1.0.2", require: false
+  # gem "capistrano-sidekiq", "~> 0.3.5", require: false
+end
+
 group :test do
   gem 'vcr', '2.9.3'
   gem 'webmock', '1.20.4'
