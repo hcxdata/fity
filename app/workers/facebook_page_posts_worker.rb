@@ -1,5 +1,7 @@
 class FacebookPagePostsWorker
+  include Sidekiq::Worker
   include FacebookClient
+  sidekiq_options retry: 5
 
   def perform(page_id)
     facebook_page = FacebookPage.find(page_id)

@@ -30,4 +30,11 @@ class FacebookPage < ActiveRecord::Base
     self.attributes = data.slice('name', 'bio', 'link', 'likes', 'talking_about_count')
     save
   end
+
+  def self.schedule_all
+    FacebookPage.find_each do |p|
+      FacebookPageWorker.perform_async(p.id)
+      FacebookPagePostsWorker.perform_async(p.id)
+    end
+  end
 end
