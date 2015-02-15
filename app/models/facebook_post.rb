@@ -37,13 +37,11 @@ class FacebookPost < ActiveRecord::Base
   def sync(data)
     data.extend Hashie::Extensions::DeepFetch
     self.extra = data.to_h
-    self.upcode = data["id"]
 
     self.posted_at     = data["created_time"]
     self.likes_count    = data.deep_fetch("likes", "summary", "total_count") { 0 }
     self.comments_count = data.deep_fetch("comments", "summary", "total_count") { 0 }
     self.shares_count   = data.deep_fetch("shares", "count") { 0 }
-
     self.attributes = data.slice("message", "link")
     save
   end

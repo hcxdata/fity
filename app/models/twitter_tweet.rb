@@ -17,7 +17,9 @@ class TwitterTweet < ActiveRecord::Base
 
   def sync(data)
     self.extra = data.to_h
+
     self.posted_at = data.created_at
+    self.attributes = data.attrs.slice(:text, :retweet_count, :favorite_count)
     save
   end
 end
