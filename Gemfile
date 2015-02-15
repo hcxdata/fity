@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'sqlite3'
+gem "mysql2"
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "fume-settable", "0.0.3"
