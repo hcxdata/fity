@@ -20,6 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 30.minutes do
-  runner "TwitterUser.schedule_all"
-  runner "FacebookPage.schedule_all"
+  runner "Account.schedule_all"
 end
