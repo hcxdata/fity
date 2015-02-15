@@ -7,6 +7,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "fume-settable", "0.0.3"
 gem 'twitter', '5.13.0'
+gem "koala", "1.11.1"
 
 # background
 gem "sidekiq", "3.2.6"
@@ -16,14 +17,10 @@ gem 'jbuilder', '~> 2.0'
 
 # assets
 gem 'jquery-rails'
-gem 'turbolinks'
 
 gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
-
-# facebook
-gem "koala"
 
 # gem 'therubyracer', platforms: :ruby
 
