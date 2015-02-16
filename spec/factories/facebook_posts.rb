@@ -4,18 +4,16 @@
 #
 #  id             :integer          not null, primary key
 #  page_id        :integer
-#  upcode         :string           not null
+#  upcode         :string
+#  posted_at      :datetime
 #  message        :text
-#  type           :string
-#  created_time   :datetime         not null
-#  updated_time   :datetime         not null
-#  extra          :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  link           :string
 #  comments_count :integer
 #  likes_count    :integer
 #  shares_count   :integer
-#  link           :string
+#  extra          :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 FactoryGirl.define do
