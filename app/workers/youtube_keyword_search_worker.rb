@@ -5,10 +5,11 @@ class YoutubeKeywordSearchWorker
 
   def perform(keyword_id)
     keyword = Keyword.find(keyword_id)
-    youtube_datas = youtube_client.videos_by(query: keyword.words)
-    youtube_datas.videos.each do |youtube_data|
-      with_proxy_env do
-        user_profile = youtube_client.profile(youtube_data.author.uri.rpartition('/').last)
+    with_proxy_env do
+      youtube_datas = youtube_client.videos_by(query: keyword.words)
+      youtube_datas.videos.each do |youtube_data|
+        author_data = youtube_data.author
+        user_profile = youtube_client.profile(author_data.uri.rpartition('/').last)
         user = YoutubeUser.where(username: user_profile.username).first_or_initialize
         user.sync!(user_profile.as_json)
 
