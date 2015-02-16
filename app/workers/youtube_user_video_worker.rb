@@ -9,7 +9,7 @@ class YoutubeUserVideoWorker
     with_proxy_env do
       video_search = youtube_client.videos_by(user: youtube_user.username)
       video_search.videos.each do |data|
-        youtube_video = youtube_user.videos.where(unique_id: data.unique_id).first_or_initialize
+        youtube_video = youtube_user.videos.where(upcode: data.unique_id).first_or_initialize
         youtube_video.sync(data.as_json)
       end
     end
