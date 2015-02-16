@@ -22,7 +22,7 @@ class YoutubeVideo < ActiveRecord::Base
 
   def sync(data)
     self.extra = data.to_h
-    self.attributes = data.slice("unique_id", "title", "favorite_count", "view_count", "published_at", "description", "extra")
+    self.attributes = data.slice("title", "favorite_count", "view_count", "published_at", "description", "extra")
     build_tracking
     save
   end
