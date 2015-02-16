@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  user_id        :integer
-#  unique_id      :string
+#  upcode         :string
 #  title          :string
 #  comment_count  :integer
 #  favorite_count :integer
