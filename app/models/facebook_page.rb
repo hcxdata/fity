@@ -22,12 +22,12 @@ class FacebookPage < ActiveRecord::Base
   belongs_to :account
   has_many :posts, class_name: FacebookPost, foreign_key: "page_id"
 
-  def sync(data)
+  def sync!(data)
     self.sync_at = Time.current
     self.extra = data.to_h
     self.upcode = data["id"]
 
     self.attributes = data.slice('username', 'name', 'bio', 'link', 'likes', 'talking_about_count')
-    save
+    save!
   end
 end

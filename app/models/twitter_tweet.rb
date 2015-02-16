@@ -28,13 +28,13 @@ class TwitterTweet < ActiveRecord::Base
     TwitterTweetMediaWorker.perform_async(id)
   end
 
-  def sync(data)
+  def sync!(data)
     self.extra = data.to_h
 
     self.posted_at = data.created_at
     self.attributes = data.attrs.slice(:text, :retweet_count, :favorite_count)
     build_tracking
-    save
+    save!
   end
 
   def build_tracking

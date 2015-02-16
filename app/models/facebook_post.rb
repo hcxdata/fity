@@ -38,7 +38,7 @@ class FacebookPost < ActiveRecord::Base
     comments.summary(true)
   )
 
-  def sync(data)
+  def sync!(data)
     data.extend Hashie::Extensions::DeepFetch
     self.extra = data.to_h
 
@@ -48,7 +48,7 @@ class FacebookPost < ActiveRecord::Base
     self.shares_count   = data.deep_fetch("shares", "count") { 0 }
     self.attributes = data.slice("message", "link")
     build_tracking
-    save
+    save!
   end
 
   def build_tracking
