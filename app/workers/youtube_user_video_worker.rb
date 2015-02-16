@@ -1,7 +1,7 @@
 class YoutubeUserVideoWorker
-  # include Sidekiq::Worker
+  include Sidekiq::Worker
   include YoutubeClient
-  # sidekiq_options retry: 5
+  sidekiq_options retry: 5
 
   def perform(user_id)
     youtube_user = YoutubeUser.find(user_id)
