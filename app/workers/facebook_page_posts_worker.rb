@@ -1,6 +1,6 @@
 class FacebookPagePostsWorker
   include Sidekiq::Worker
-  include FacebookClient
+  include Clients
   sidekiq_options retry: 5
 
   def perform(page_id)

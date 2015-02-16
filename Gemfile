@@ -9,6 +9,10 @@ gem "fume-settable", "0.0.3"
 gem 'twitter', '5.13.0'
 gem "koala", "1.11.1"
 
+
+# model
+gem "carrierwave", "0.10.0"
+
 # background
 gem "whenever", "~> 0.9.3", require: false
 gem "sidekiq", "3.2.6"
@@ -33,10 +37,11 @@ group :development, :test do
   gem 'spring'
 
   gem 'annotate'
-  gem 'pry-rails'
   gem 'rspec-rails', '3.2.0'
   gem 'factory_girl_rails', '4.5.0'
 end
+
+gem 'pry-rails'
 
 group :development do
   gem "capsum", "~> 1.0.2", require: false

@@ -12,12 +12,21 @@
 #  text           :text
 #  retweet_count  :integer
 #  favorite_count :integer
+#  media          :string
 #
 
 class TwitterTweet < ActiveRecord::Base
   store :extra, coder: JSON
+  mount_uploader :media, MediaUploader
+
   belongs_to :user, class_name: TwitterUser, foreign_key: "user_id"
   has_many :trackings, class_name: TwitterTweetTracking, foreign_key: "tweet_id", autosave: true
+
+  after_save :async_download_media
+
+  def async_download_media
+    TwitterTweetMediaWorker.perform_async(id)
+  end
 
   def sync(data)
     self.extra = data.to_h
