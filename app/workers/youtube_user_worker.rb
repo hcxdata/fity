@@ -8,7 +8,7 @@ class YoutubeUserWorker
 
     with_proxy_env do
       user_profile = youtube_client.profile(youtube_user.username)
-      youtube_user.sync(user_profile.as_json)
+      youtube_user.sync!(user_profile.as_json)
     end
   end
 end

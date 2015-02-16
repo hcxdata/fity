@@ -21,4 +21,5 @@
 
 every 30.minutes do
   runner "Account.schedule_all"
+  runner "Keyword.schedule_all"
 end

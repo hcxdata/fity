@@ -4,18 +4,16 @@
 #
 #  id             :integer          not null, primary key
 #  page_id        :integer
-#  upcode         :string           not null
+#  upcode         :string
+#  posted_at      :datetime
 #  message        :text
-#  type           :string
-#  created_time   :datetime         not null
-#  updated_time   :datetime         not null
-#  extra          :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  link           :string
 #  comments_count :integer
 #  likes_count    :integer
 #  shares_count   :integer
-#  link           :string
+#  extra          :text
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class FacebookPost < ActiveRecord::Base
@@ -38,7 +36,7 @@ class FacebookPost < ActiveRecord::Base
     comments.summary(true)
   )
 
-  def sync(data)
+  def sync!(data)
     data.extend Hashie::Extensions::DeepFetch
     self.extra = data.to_h
 
@@ -48,7 +46,7 @@ class FacebookPost < ActiveRecord::Base
     self.shares_count   = data.deep_fetch("shares", "count") { 0 }
     self.attributes = data.slice("message", "link")
     build_tracking
-    save
+    save!
   end
 
   def build_tracking

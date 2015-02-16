@@ -8,7 +8,7 @@ class FacebookPagePostsWorker
     facebook_datas = facebook_client.get_connection(facebook_page.username, 'posts', { fields: FacebookPost::API_FIELDS.join(",") }, facebook_http_options)
     facebook_datas.each do |data|
       post = facebook_page.posts.where(upcode: data["id"]).first_or_initialize
-      post.sync(data)
+      post.sync!(data)
     end
   end
 end

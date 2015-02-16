@@ -17,18 +17,18 @@ class Account < ActiveRecord::Base
   def self.schedule_all
     Account.find_each do |account|
       account.twitter_users.find_each do |u|
-        TwitterUserWorker.perform_async(u.id)
-        TwitterUserTimelineWorker.perform_async(u.id)
+        TwitterUserWorker.perform_in(rand(60), u.id)
+        TwitterUserTimelineWorker.perform_in(rand(60), u.id)
       end
 
       account.facebook_pages.find_each do |p|
-        FacebookPageWorker.perform_async(p.id)
-        FacebookPagePostsWorker.perform_async(p.id)
+        FacebookPageWorker.perform_in(rand(60), p.id)
+        FacebookPagePostsWorker.perform_in(rand(60), p.id)
       end
 
       account.youtube_users.find_each do |u|
-        YoutubeUserWorker.perform_async(u.id)
-        YoutubeUserVideoWorker.perform_async(u.id)
+        YoutubeUserWorker.perform_in(rand(60), u.id)
+        YoutubeUserVideoWorker.perform_in(rand(60), u.id)
       end
     end
   end

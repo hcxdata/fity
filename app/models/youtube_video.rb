@@ -20,11 +20,11 @@ class YoutubeVideo < ActiveRecord::Base
   belongs_to :user, class_name: YoutubeUser, foreign_key: "user_id"
   has_many :trackings, class_name: YoutubeVideoTracking, foreign_key: "video_id", autosave: true
 
-  def sync(data)
+  def sync!(data)
     self.extra = data.to_h
     self.attributes = data.slice("title", "favorite_count", "view_count", "published_at", "description", "extra")
     build_tracking
-    save
+    save!
   end
 
   def build_tracking

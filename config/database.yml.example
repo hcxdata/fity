@@ -27,3 +27,4 @@ production:
   username: root
   password: "SgeMeTi7xQw[A1o9"
   host: news.jetyun.com
+  encoding: utf8mb4

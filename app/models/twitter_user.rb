@@ -24,11 +24,11 @@ class TwitterUser < ActiveRecord::Base
   store :extra, coder: JSON
   has_many :tweets, class_name: TwitterTweet, foreign_key: "user_id"
 
-  def sync(data)
+  def sync!(data)
     self.sync_at = Time.current
     self.extra = data.to_h
     self.upcode = data.id.to_s
     self.attributes = data.attrs.slice(:screen_name, :name, :location, :description, :url, :followers_count, :friends_count, :statuses_count)
-    save
+    save!
   end
 end
