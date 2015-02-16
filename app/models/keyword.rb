@@ -11,7 +11,7 @@
 class Keyword < ActiveRecord::Base
   def self.schedule_all
     Keyword.find_each do |keyword|
-      TwitterKeywordSearchWorker.perform_async(keyword.id)
+      TwitterKeywordSearchWorker.perform_in(rand(60), keyword.id)
     end
   end
 end
