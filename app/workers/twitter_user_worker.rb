@@ -1,6 +1,6 @@
 class TwitterUserWorker
   include Sidekiq::Worker
-  include TwitterClient
+  include Clients
   sidekiq_options retry: 5
 
   def perform(user_id)

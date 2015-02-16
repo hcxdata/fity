@@ -22,6 +22,12 @@ class TwitterTweet < ActiveRecord::Base
   belongs_to :user, class_name: TwitterUser, foreign_key: "user_id"
   has_many :trackings, class_name: TwitterTweetTracking, foreign_key: "tweet_id", autosave: true
 
+  after_save :async_download_media
+
+  def async_download_media
+    TwitterTweetMediaWorker.perform_async(id)
+  end
+
   def sync(data)
     self.extra = data.to_h
 
