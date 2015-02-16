@@ -9,4 +9,8 @@ module TwitterClient
       config.proxy = Project.proxy_url
     end
   end
+
+  def http_client
+    @http_client ||= Faraday.new(proxy: Project.proxy_url)
+  end
 end

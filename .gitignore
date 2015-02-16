@@ -9,3 +9,4 @@
 /config/database.yml
 /config/settings.local.rb
 /spec/cassettes/
+/public/uploads/

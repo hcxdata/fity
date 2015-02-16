@@ -12,6 +12,7 @@
 #  text           :text
 #  retweet_count  :integer
 #  favorite_count :integer
+#  media          :string
 #
 
 FactoryGirl.define do
