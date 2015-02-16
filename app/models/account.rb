@@ -11,6 +11,7 @@
 class Account < ActiveRecord::Base
   has_many :twitter_users
   has_many :facebook_pages
+  has_many :youtube_users
 
 
   def self.schedule_all
@@ -23,6 +24,11 @@ class Account < ActiveRecord::Base
       account.facebook_pages.find_each do |p|
         FacebookPageWorker.perform_async(p.id)
         FacebookPagePostsWorker.perform_async(p.id)
+      end
+
+      account.youtube_users.find_each do |u|
+        YoutubeUserWorker.perform_async(u.id)
+        YoutubeUserVideoWorker.perform_async(u.id)
       end
     end
   end
