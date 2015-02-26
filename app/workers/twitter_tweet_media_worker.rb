@@ -10,12 +10,7 @@ class TwitterTweetMediaWorker
     data = media.find { |m| m["type"] == "photo" }
 
     if data
-      res = http_client.get(data["media_url"])
-      content_type = res.headers["content-type"]
-      type = MIME::Types[content_type].first
-      file = Tempfile.new(["fity-", ".#{type.extensions.first}"])
-      File.open(file, "wb") { |f| f << res.body }
-      tweet.media = file
+      tweet.media = download_file(data["media_url"])
       tweet.save!
     end
   end

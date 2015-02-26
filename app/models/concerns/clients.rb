@@ -49,4 +49,13 @@ module Clients
       ENV["https_proxy"] = orig_https_proxy
     end
   end
+
+  def download_file(url)
+    res = http_client.get(url)
+    content_type = res.headers["content-type"]
+    type = MIME::Types[content_type].first
+    file = Tempfile.new(["fity-", ".#{type.extensions.first}"])
+    File.open(file, "wb") { |f| f << res.body }
+    file
+  end
 end

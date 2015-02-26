@@ -17,11 +17,13 @@
 #  extra           :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  avatar          :string
 #
 
 class TwitterUser < ActiveRecord::Base
   belongs_to :account
   store :extra, coder: JSON
+  mount_uploader :avatar, MediaUploader
   has_many :tweets, class_name: TwitterTweet, foreign_key: "user_id"
 
   def sync!(data)
