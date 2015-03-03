@@ -9,6 +9,7 @@ gem "fume-settable", "0.0.3"
 gem 'twitter', '5.13.0'
 gem "koala", "1.11.1"
 gem "youtube_it"
+gem "instagram"
 
 
 # model
