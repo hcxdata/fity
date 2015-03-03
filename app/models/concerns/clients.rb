@@ -58,4 +58,9 @@ module Clients
     File.open(file, "wb") { |f| f << res.body }
     file
   end
+
+  def instagram_client
+    @instagram_client ||= Instagram.client(:access_token => Project.instagram_access_token)
+    
+  end
 end

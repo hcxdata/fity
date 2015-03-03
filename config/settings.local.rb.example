@@ -6,4 +6,6 @@ settings.facebook_app_secret  = "3854264d01d6f72e5b59593835f32493"
 
 settings.youtube_dev_key      = "AIzaSyARrJ7Ubk68g0s93TnhFK80bSHnGki1ne8"
 
+settings.instagram_access_token = "1732714997.50adddf.3d0e4af9af834633b8ea156b98e90a13"
+
 # settings.proxy_url = "http://115.28.144.151:13128"
