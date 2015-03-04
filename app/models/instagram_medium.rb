@@ -1,7 +1,7 @@
 class InstagramMedium < ActiveRecord::Base
   
-  belongs_to :user, class_name: InstagramUser, foreign_key: "user_id"
-  has_many :trackings, class_name: InstagramMediaTracking, foreign_key: "media_id", autosave: true
+  belongs_to :user, class_name: InstagramUser
+  has_many :trackings, class_name: InstagramMediumTracking, foreign_key: "medium_id", autosave: true
 
   def sync!(data)
     data.extend Hashie::Extensions::DeepFetch

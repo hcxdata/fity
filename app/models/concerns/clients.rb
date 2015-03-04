@@ -60,7 +60,7 @@ module Clients
   end
 
   def instagram_client
-    @instagram_client ||= Instagram.client(:access_token => Project.instagram_access_token)
+    @instagram_client ||= Instagram.client(access_token: Project.instagram_access_token, proxy: Project.proxy_url)
     
   end
 end
