@@ -8,8 +8,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "fume-settable", "0.0.3"
 gem 'twitter', '5.13.0'
 gem "koala", "1.11.1"
-gem "youtube_it"
-gem "instagram"
+gem "youtube_it", "2.4.2"
+gem "instagram", "1.1.3"
 
 
 # model
