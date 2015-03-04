@@ -12,6 +12,7 @@ class Account < ActiveRecord::Base
   has_many :twitter_users
   has_many :facebook_pages
   has_many :youtube_users
+  has_many :instagram_users
 
 
   def self.schedule_all
@@ -29,6 +30,11 @@ class Account < ActiveRecord::Base
       account.youtube_users.find_each do |u|
         YoutubeUserWorker.perform_in(rand(60), u.id)
         YoutubeUserVideoWorker.perform_in(rand(60), u.id)
+      end
+
+      account.instagram_users.find_each do |u|
+        InstagramUserWorker.perform_in(rand(60), u.id)
+        InstagramUserMediaWorker.perform_in(rand(60), u.id)
       end
     end
   end
