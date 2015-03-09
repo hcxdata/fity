@@ -2,6 +2,7 @@ class InstagramUser < ActiveRecord::Base
   store :extra, coder: JSON
   belongs_to :account
   has_many :media, class_name: InstagramMedium, foreign_key: "user_id"
+  mount_uploader :profile_picture, MediaUploader
 
   def sync!(data)
     data.extend Hashie::Extensions::DeepFetch
