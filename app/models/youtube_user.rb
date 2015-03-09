@@ -24,6 +24,7 @@ class YoutubeUser < ActiveRecord::Base
   store :extra, coder: JSON
   belongs_to :account
   has_many :videos, class_name: YoutubeVideo, foreign_key: "user_id"
+  mount_uploader :avatar, MediaUploader
 
   def sync!(data)
     self.sync_at = Time.current
