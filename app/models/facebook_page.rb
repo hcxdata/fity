@@ -20,6 +20,7 @@
 class FacebookPage < ActiveRecord::Base
   store :extra, coder: JSON
   belongs_to :account
+  mount_uploader :picture, MediaUploader
   has_many :posts, class_name: FacebookPost, foreign_key: "page_id"
 
   def sync!(data)
