@@ -8,7 +8,7 @@ class InstagramUserWorker
     user = instagram_client.user_search(instagram_user.username).find { |user| user.username.downcase == instagram_user.username.downcase }
     instagram_user.sync!(instagram_client.user(user.id).as_json)
 
-    if (profile_picture_url = user.profile_picture)
+    if !user.profile_picture? && (profile_picture_url = user.profile_picture)
       user.profile_picture = download_file(profile_picture_url)
       user.save!
     end

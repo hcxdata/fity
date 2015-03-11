@@ -8,7 +8,7 @@ class TwitterUserWorker
     user_data = twitter_client.user(twitter_user.screen_name)
     twitter_user.sync!(user_data)
 
-    if (profile_image_url = user_data.profile_image_url)
+    if !twitter_user.avatar? && (profile_image_url = user_data.profile_image_url)
       twitter_user.avatar = download_file(profile_image_url)
       twitter_user.save!
     end

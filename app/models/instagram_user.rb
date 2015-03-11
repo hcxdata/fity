@@ -12,7 +12,7 @@ class InstagramUser < ActiveRecord::Base
     self.media_count = data.deep_fetch("counts", "media") { 0 }
     self.follows_count = data.deep_fetch("counts", "follows") { 0 }
     self.followed_by_count   = data.deep_fetch("counts", "followed_by") { 0 }
-    self.attributes = data.slice('upcode', 'username', 'full_name', 'profile_picture', 'bio', 'website')
+    self.attributes = data.slice('upcode', 'username', 'full_name', 'bio', 'website')
     save!
   end
 end
