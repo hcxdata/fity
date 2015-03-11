@@ -13,6 +13,7 @@
 #  retweet_count  :integer
 #  favorite_count :integer
 #  media          :string
+#  post_url       :string
 #
 
 class TwitterTweet < ActiveRecord::Base
