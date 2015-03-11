@@ -31,7 +31,7 @@ class YoutubeUser < ActiveRecord::Base
     self.extra = data.to_h
     # self.upcode = data["user_id"]
 
-    self.attributes = data.slice('username', 'username_display', 'user_id', 'channel_uri', 'avatar', 'gender', 'location', 'subscribers', 'upload_count', 'upload_views')
+    self.attributes = data.slice('username', 'username_display', 'user_id', 'channel_uri', 'gender', 'location', 'subscribers', 'upload_count', 'upload_views')
     save!
   end
 end
