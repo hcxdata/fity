@@ -14,6 +14,7 @@
 #  extra          :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  post_url       :string
 #
 
 class FacebookPost < ActiveRecord::Base
