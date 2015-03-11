@@ -9,8 +9,9 @@ class YoutubeUserWorker
     with_proxy_env do
       user_profile = youtube_client.profile(youtube_user.username)
       youtube_user.sync!(user_profile.as_json)
-      if (profile_image_url = user_profile.avatar)
-        youtube_user.avatar = download_file(profile_image_url)
+
+      if (avatar_url = user_profile.avatar)
+        youtube_user.avatar = download_file(avatar_url)
         youtube_user.save!
       end
     end
