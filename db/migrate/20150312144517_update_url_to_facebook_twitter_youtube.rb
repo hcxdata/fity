@@ -10,13 +10,13 @@ class UpdateUrlToFacebookTwitterYoutube < ActiveRecord::Migration
   class YoutubeVideo < ActiveRecord::Base
   end
   def change
-    FacebookPost.where(post_url: nil) do |facebook_post|
+    FacebookPost.where(post_url: nil).find_each do |facebook_post|
       facebook_post.update(post_url: "https://www.facebook.com/#{facebook_post.upcode.gsub('_', '/posts/')}")
     end
-    TwitterTweet.where(post_url: nil) do |twitter_tweet|
-      twitter_tweet.update(post_url: "https://twitter.com/#{twitter_tweet.user.upcode}/status/#{twitter_tweet.updcode}")
+    TwitterTweet.where(post_url: nil).find_each do |twitter_tweet|
+      twitter_tweet.update(post_url: "https://twitter.com/#{twitter_tweet.user.upcode}/status/#{twitter_tweet.upcode}")
     end
-    YoutubeVideo.where(player_url: nil) do |youtube_video|
+    YoutubeVideo.where(player_url: nil).find_each do |youtube_video|
       youtube_video.update(player_url: youtube_video.extra['player_url'])
     end
   end
