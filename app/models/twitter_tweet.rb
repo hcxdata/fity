@@ -32,7 +32,7 @@ class TwitterTweet < ActiveRecord::Base
   def sync!(data)
     self.extra = data.to_h
 
-    self.post_url = "https://twitter.com/#{data.user.id.to_s}/status/#{data.id.to_s}"
+    self.post_url = "https://twitter.com/#{data.user.id}/status/#{data.id}"
     self.posted_at = data.created_at
     self.attributes = data.attrs.slice(:text, :retweet_count, :favorite_count)
     build_tracking
