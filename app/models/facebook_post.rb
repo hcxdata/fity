@@ -18,6 +18,7 @@
 #
 
 class FacebookPost < ActiveRecord::Base
+  store :extra, coder: JSON
   belongs_to :page, class_name: FacebookPage, foreign_key: "page_id"
   has_many :trackings, class_name: FacebookPostTracking, foreign_key: "post_id", autosave: true
 
