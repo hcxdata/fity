@@ -42,7 +42,8 @@ class FacebookPost < ActiveRecord::Base
     data.extend Hashie::Extensions::DeepFetch
     self.extra = data.to_h
 
-    self.posted_at     = data["created_time"]
+    self.post_url = "https://www.facebook.com/#{data['id'].gsub('_', '/posts/')}"
+    self.posted_at = data["created_time"]
     self.likes_count    = data.deep_fetch("likes", "summary", "total_count") { 0 }
     self.comments_count = data.deep_fetch("comments", "summary", "total_count") { 0 }
     self.shares_count   = data.deep_fetch("shares", "count") { 0 }
