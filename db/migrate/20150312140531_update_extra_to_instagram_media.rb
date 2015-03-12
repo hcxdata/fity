@@ -1,5 +1,6 @@
 class UpdateExtraToInstagramMedia < ActiveRecord::Migration
   class InstagramMedium < ActiveRecord::Base
+    self.inheritance_column = "_type"
   end
 
   def change
