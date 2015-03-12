@@ -18,7 +18,7 @@
 #
 
 class InstagramMedium < ActiveRecord::Base
-  
+  store :extra, coder: JSON
   belongs_to :user, class_name: InstagramUser
   has_many :trackings, class_name: InstagramMediumTracking, foreign_key: "medium_id", autosave: true
 
