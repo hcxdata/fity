@@ -20,8 +20,16 @@
 class InstagramMedium < ActiveRecord::Base
   self.inheritance_column = "_type"
   store :extra, coder: JSON
+  mount_uploader :media, MediaUploader
+
   belongs_to :user, class_name: InstagramUser
   has_many :trackings, class_name: InstagramMediumTracking, foreign_key: "medium_id", autosave: true
+
+  after_create :async_download_media
+
+  def async_download_media
+    InstagramMediumMediaWorker.perform_async(id)
+  end
 
   def sync!(data)
     data.extend Hashie::Extensions::DeepFetch
