@@ -18,8 +18,16 @@
 #
 
 class YoutubeVideo < ActiveRecord::Base
+  mount_uploader :media, MediaUploader
+  
   belongs_to :user, class_name: YoutubeUser, foreign_key: "user_id"
   has_many :trackings, class_name: YoutubeVideoTracking, foreign_key: "video_id", autosave: true
+
+  after_create :async_download_media
+
+  def async_download_media
+    YoutubeVideoMediaWorker.perform_async(id)
+  end
 
   def sync!(data)
     self.extra = data.to_h

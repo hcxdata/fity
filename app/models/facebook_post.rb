@@ -19,8 +19,16 @@
 
 class FacebookPost < ActiveRecord::Base
   store :extra, coder: JSON
+  mount_uploader :media, MediaUploader
+
   belongs_to :page, class_name: FacebookPage, foreign_key: "page_id"
   has_many :trackings, class_name: FacebookPostTracking, foreign_key: "post_id", autosave: true
+
+  after_create :async_download_media
+
+  def async_download_media
+    FacebookPostMediaWorker.perform_async(id)
+  end
 
   API_FIELDS = %w(
     id
