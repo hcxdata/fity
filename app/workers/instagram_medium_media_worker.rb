@@ -5,7 +5,7 @@ class InstagramMediumMediaWorker
 
   def perform(medium_id)
     medium = InstagramMedium.find(medium_id)
-    images = (medium.extra || {})
+    images = (medium.extra["images"] || {})
     data = images["thumbnail"]
     if data
       medium.media = download_file(data["url"])
